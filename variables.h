@@ -19,8 +19,8 @@ extern "C" {
 #define PASSDB "pacs"
 
 #define RUTA_ZIP "/srv/web/medipacs.cl/www/htdocs/zip"
-#define RUTA_DCM "opt/dcm4chee/server/default/archive"
-    
+#define RUTA_DCM "/opt/dcm4chee/server/default/archive"
+
     typedef struct {
         char* paciente;
         char* archivo;

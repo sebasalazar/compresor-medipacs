@@ -60,10 +60,9 @@ void comprimir(long id, char* nombreArchivo) {
                     memset(buffer, 0, len);
                     temporal = zip_source_buffer(comprimido, buffer, len, 1);
                     if (temporal != NULL) {
-                        if (zip_add(comprimido, examenes[i].archivo, temporal) >= 0) {
-                            zip_source_free(temporal);
-                        } else {
+                        if (zip_add(comprimido, examenes[i].archivo, temporal) < 0) {
                             fprintf(stderr, "\n[ERROR] No se pudo agregar archivo comprimido: %s", zip_strerror(comprimido));
+                            zip_source_free(temporal);
                         }
                     } else {
                         fprintf(stderr, "\n[ERROR] No se pudo crear buffer: %s", zip_strerror(comprimido));
