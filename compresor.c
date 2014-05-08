@@ -10,8 +10,8 @@ void comprimir(long id, char* nombreArchivo) {
     PGresult* resultado;
     long tamano = 0;
     examen* examenes = NULL;
-    zip* comprimido = NULL;
-    zip_source* temporal = NULL;
+    struct zip* comprimido = NULL;
+    struct zip_source* temporal = NULL;
 
     if (id > 0) {
         tamano = sizeof (char)*1025;
@@ -27,8 +27,8 @@ void comprimir(long id, char* nombreArchivo) {
                     memset(nombre, 0, tamano);
                     memset(ruta, 0, tamano);
 
-                    sprintf(nombre, 1024, "%s", getString(dbresult(resultado, i, 0)));
-                    sprintf(ruta, 1024, "%s/%s", RUTA_DCM, getString(dbresult(resultado, i, 1)));
+                    snprintf(nombre, 1024, "%s", getString(dbresult(resultado, i, 0)));
+                    snprintf(ruta, 1024, "%s/%s", RUTA_DCM, getString(dbresult(resultado, i, 1)));
 
                     if (existeArchivo(ruta)) {
                         // Si el archivo existe, lleno la estructura y aumento el contador
