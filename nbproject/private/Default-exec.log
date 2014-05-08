@@ -1,0 +1,28 @@
+called: gcc
+	/home/seba/sources/compresor-medipacs
+	gcc
+	-Wall
+	-g3
+	-c
+	-MMD
+	-MP
+	-MF
+	build/utils.o.d
+	-o
+	build/utils.o
+	utils.c
+
+called: gcc
+	/home/seba/sources/compresor-medipacs
+	gcc
+	-Wall
+	-g3
+	-c
+	-MMD
+	-MP
+	-MF
+	build/db.o.d
+	-o
+	build/db.o
+	db.c
+

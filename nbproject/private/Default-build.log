@@ -1,0 +1,7 @@
+mkdir -p build
+rm -f build/utils.o.d
+gcc -Wall -g3 -c -MMD -MP -MF build/utils.o.d -o build/utils.o utils.c
+mkdir -p build
+rm -f build/db.o.d
+gcc -Wall -g3 -c -MMD -MP -MF build/db.o.d -o build/db.o db.c
+gmake: *** No rule to make target `tareas.c', needed by `build/tareas.o'.  Stop.
