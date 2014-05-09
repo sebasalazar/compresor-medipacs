@@ -4,8 +4,7 @@ void comprimir(long id, char* nombreArchivo) {
     char consulta[1025];
     char nombre[1025];
     char ruta[1025];
-    char buffer[4096];
-    int i = 0, k = 0, num = 0, error = 0, len = 0;
+    int i = 0, k = 0, num = 0, error = 0;
     PGconn* conexion;
     PGresult* resultado;
     long tamano = 0;
@@ -56,9 +55,7 @@ void comprimir(long id, char* nombreArchivo) {
             comprimido = zip_open(nombreArchivo, ZIP_CREATE, &error);
             if (comprimido != NULL) {
                 for (i = 0; i < k; i++) {
-                    len = 4096 * sizeof (char);
-                    memset(buffer, 0, len);
-                    temporal = zip_source_buffer(comprimido, buffer, len, 1);
+                    temporal = zip_source_file(comprimido, examenes[i].archivo, 0, 0);
                     if (temporal != NULL) {
                         if (zip_add(comprimido, examenes[i].archivo, temporal) < 0) {
                             fprintf(stderr, "\n[ERROR] No se pudo agregar archivo comprimido: %s", zip_strerror(comprimido));
